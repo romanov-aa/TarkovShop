@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="pls">
+  <h1>Ваш схрон</h1>
+  {% if user.is_authenticated %}
+    <p>Здарова {{ user.username }}!</p>
+    <p>Можешь отдохнуть в своём убежище, а заодно не забудь прикупить у меня пару вещичек</p>
+    <p><a href="{% url 'logout' %}">Побег из Таркова</a></p>
+    <h2>Корзина</h2>
+    {% if products %}
+      <a href="{% url 'buy_order' %}" class="btn btn-success">Купить</a>
+    {% endif %}
+    {% for product in products %}
+      <ul>
+        <li>
+          <p>{{ product.title }} {{ product.price }} рублей</p><a href="{% url 'remove_from_cart' product.id %}">Убрать из корзины</a>
+        </li>
+      </ul>
+      {% empty %}
+      <p>Пусто</p>
+    {% endfor %}
+  {% else %}
+    <p>Вы не вошли в свой схрон! <a href="{% url 'login' %}">Войти</a></p>
+  {% endif %}
+</div>
+{% endblock %}

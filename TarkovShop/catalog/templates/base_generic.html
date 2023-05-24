@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <aside>
+        <span class="logo">TarkovShop</span>
+        <h3>Карта магазина</h3>
+        <ul>
+            <a href="{% url 'index' %}"><li>Главная</li></a>
+            <a href="{% url 'product' %}"><li>Каталог</li></a>
+            <a href="{% url 'manufacturer' %}"><li>Производители</li></a>
+            <a href="{% url 'welcome' %}"><li>Схрон</li></a>
+            <a href="{% url 'contacts' %}"><li>Наши контакты</li></a>
+        </ul>
+    </aside>
+    <main>
+        {% block content %}
+
+        {% endblock %}
+        {% block pagination %}
+          {% if is_paginated %}
+              <div class="pagination">
+                  <span class="page-links">
+                      {% if page_obj.has_previous %}
+                          <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                      {% endif %}
+                      <span class="page-current">
+                          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                      </span>
+                      {% if page_obj.has_next %}
+                          <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                      {% endif %}
+                  </span>
+              </div>
+          {% endif %}
+        {% endblock %}
+    </main>
+</body>
+</html>

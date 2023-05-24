@@ -1,0 +1,32 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="pls">
+    <form action="{% url 'search' %}" method="get" style="margin-top: 15px">
+        <input type="text" name="search_input" placeholder="search">
+        <button type="submit">Search</button>
+    </form>
+
+    <div style="margin-top: 15px">
+        <a href="/products/filterhelmet/" style="padding: 10px">Шлемы</a>
+        <a href="/products/filterarmor/" style="padding: 10px">Бронежилеты</a>
+        <a href="/products/filterwear/" style="padding: 10px">Разгрузки</a>
+        <a href="/products/filterarmorwear/" style="padding: 10px">Бронеразгрузки</a>
+    </div>
+
+    <h1>Product List</h1>
+
+    {% if product_list %}
+        {% for product in product_list %}
+            <div class="alert alert-primary product_block">
+                <div class="img_div">
+                    <img src="{{ product.image.url }}" alt="connect" style="height:200px; width: 200px; margin-right: 5px">
+                </div>
+                <div class="near_img_text">
+                    <a href="{{ product.get_absolute_url }}">{{ product.title }}</a> ({{product.manufacturer}})
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

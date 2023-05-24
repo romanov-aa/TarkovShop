@@ -1,0 +1,85 @@
+aside{
+    float: left;
+    background: black;
+    width: 20%;
+    padding: 2.5%;
+    height: 100vh;
+    color: aqua;
+    border-right: 5px solid #4d4d4d;
+}
+
+body{
+    background-image: url(image/444.jpg);
+    background-size: no-repeat;
+    background-size: cover;
+}
+
+aside .logo{
+    font-size: 40px;
+    margin-left: 10px;
+    font-weight: bold;
+    position: relative;
+    top:-5px;
+}
+aside h3{
+    margin-top: 50px;
+    font-size: 30px;
+}
+aside ul {
+    list-style:none;
+    text-decoration: none;
+}
+aside ul li{
+    color: rgb(41, 132, 165);
+    display: block;
+    margin-top: 20px;
+    transition: transform .6s ease;
+}
+aside ul a{
+    text-decoration: none;
+}
+aside ul li:hover,aside ul a:hover{
+    color:blueviolet;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+main .pls{
+    float: left;
+    color: rgb(89, 1, 64);
+    font-size: 18px;
+    text-align: center;
+    width: 75%;
+}
+
+
+main .pls h1{
+    font-size: 50px;
+}
+
+main .pls p{
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.product_block{
+    display: flex;
+}
+
+.img_div{
+    flex-basis: 50%;
+    text-align: right;
+}
+
+.near_img_text{
+    flex-basis: 50%;
+    text-align: left;
+    margin-top: 70px;
+}
+
+
+
+
+
+
+
